@@ -23,7 +23,7 @@ app.post('/student', async (req, res) => {
 
       let info = await transporter.sendMail({
         from: `"${req.body.name}" <hr@homeworkhometutors.in>`, // sender address
-        to: "hr@homeworkhometutors.in", // list of receivers
+        to: "mail.narrow@gmail.com", // list of receivers
         subject: "Student Registration", // Subject line
         text: "Student Details", // plain text body
         html: `<p><b>Name : </b>${req.body.name}</p> <p><b>Email : </b>${req.body.email}</p> <p><b>Phone : </b> ${req.body.phone}</p> <p><b>Class : </b>${req.body.classname}</p> <p><b>District : </b>${req.body.district}</p>`, // html body
