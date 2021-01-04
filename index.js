@@ -35,7 +35,7 @@ app.post('/student', async (req, res) => {
 });
 
 app.post('/teacher', async (req, res, next) => {
-    res.json(req.headers);
+    console.log(req.headers);
     const form = formidable({ multiples: true });
     form.parse(req, async (err, fields, files) => {
         if (err) {
