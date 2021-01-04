@@ -1,7 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const formidable = require('formidable');
+const party = require('multiparty');
 
 const app = express();
 
@@ -36,7 +36,7 @@ app.post('/student', async (req, res) => {
 
 app.post('/teacher', async (req, res, next) => {
     //console.log(req.headers);
-    const form = formidable();
+    const form = new party.Form;
     form.parse(req, async (err, fields, files) => {
         if (err) {
           next(err);
