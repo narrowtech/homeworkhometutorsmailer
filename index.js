@@ -43,7 +43,7 @@ app.post('/teacher', async (req, res, next) => {
           return;
         }
         // res.json({ fields, files });
-        console.log(fields, files);
+        // console.log(fields, files);
         console.log(fields.name);
 
         let transporter = nodemailer.createTransport({
@@ -57,11 +57,11 @@ app.post('/teacher', async (req, res, next) => {
           });
     
           let info = await transporter.sendMail({
-            from: `"${req.body.name}" <hr@homeworkhometutors.in>`, // sender address
+            from: `"${fields.name}" <hr@homeworkhometutors.in>`, // sender address
             to: "mail.narrow@gmail.com", // list of receivers
             subject: "Student Registration", // Subject line
             text: "Student Details", // plain text body
-            html: `<p><b>Name : </b>${req.body.name}</p> <p><b>Email : </b>${req.body.email}</p> <p><b>Phone : </b> ${req.body.phone}</p> <p><b>Qualification : </b>${req.body.qualification}</p> <p><b>Address : </b>${req.body.address}</p>`, // html body
+            html: `<p><b>Name : </b>${fields.name}</p> <p><b>Email : </b>${fields.email}</p> <p><b>Phone : </b> ${fields.phone}</p> <p><b>Qualification : </b>${fields.qualification}</p> <p><b>Address : </b>${fields.address}</p>`, // html body
             attachments: [
                 {   
                     filename: files.file.name,
