@@ -5,11 +5,10 @@ const formidable = require('formidable');
 
 const app = express();
 
-app.use(cors());
 app.use(express.urlencoded());
 app.use(express.json());
 
-app.post('/student', async (req, res) => {
+app.post('/student', cors(), async (req, res) => {
     console.log(req.body);
     let transporter = nodemailer.createTransport({
         host: "smtp.zoho.in",
