@@ -35,7 +35,7 @@ app.post('/student', async (req, res) => {
 });
 
 app.post('/teacher', async (req, res, next) => {
-    console.log(req.headers);
+    //console.log(req.headers);
     const form = formidable({ multiples: true });
     form.parse(req, async (err, fields, files) => {
         if (err) {
@@ -43,7 +43,7 @@ app.post('/teacher', async (req, res, next) => {
           return;
         }
         // res.json({ fields, files });
-        //console.log(fields, files);
+        console.log(fields, files);
         console.log(fields.name);
 
         let transporter = nodemailer.createTransport({
