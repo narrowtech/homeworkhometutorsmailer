@@ -35,15 +35,16 @@ app.post('/student', async (req, res) => {
 });
 
 app.post('/teacher', async (req, res, next) => {
-    // const form = formidable({ multiples: true });
-    // form.parse(req, async (err, fields, files) => {
-    //     if (err) {
-    //       next(err);
-    //       return;
-    //     }
-    //     // res.json({ fields, files });
-    //     //console.log(fields, files);
-    //     console.log(fields.name);
+    res.json(req.headers);
+    const form = formidable({ multiples: true });
+    form.parse(req, async (err, fields, files) => {
+        if (err) {
+          next(err);
+          return;
+        }
+        // res.json({ fields, files });
+        //console.log(fields, files);
+        console.log(fields.name);
 
         let transporter = nodemailer.createTransport({
             host: "smtp.zoho.in",
@@ -57,21 +58,21 @@ app.post('/teacher', async (req, res, next) => {
     
           let info = await transporter.sendMail({
             from: `"${req.body.name}" <hr@homeworkhometutors.in>`, // sender address
-            to: "hr@homeworkhometutors.in", // list of receivers
+            to: "mail.narrow@gmail.com", // list of receivers
             subject: "Student Registration", // Subject line
             text: "Student Details", // plain text body
             html: `<p><b>Name : </b>${req.body.name}</p> <p><b>Email : </b>${req.body.email}</p> <p><b>Phone : </b> ${req.body.phone}</p> <p><b>Qualification : </b>${req.body.qualification}</p> <p><b>Address : </b>${req.body.address}</p>`, // html body
-            // attachments: [
-            //     {   
-            //         filename: files.file.name,
-            //         path: files.file.path
-            //     },
-            // ]
+            attachments: [
+                {   
+                    filename: files.file.name,
+                    path: files.file.path
+                },
+            ]
           });
 
           console.log("Message sent: %s", info.messageId);
           console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    // });
+    });
 
 
     res.send('Hello');
