@@ -9,6 +9,8 @@ app.use(cors());
 app.use(express.urlencoded());
 app.use(express.json());
 
+app.get('/', (req, res) => res.send('Hello!'));
+
 app.post('/student', async (req, res) => {
     console.log(req.body);
     let transporter = nodemailer.createTransport({
