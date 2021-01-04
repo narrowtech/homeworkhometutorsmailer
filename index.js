@@ -6,7 +6,7 @@ const formidable = require('formidable');
 const app = express();
 
 app.use(cors());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.post('/student', async (req, res) => {
