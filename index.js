@@ -36,6 +36,7 @@ app.post('/student', async (req, res) => {
 
 app.post('/teacher', async (req, res, next) => {
     //console.log(req.headers);
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const form = formidable();
     form.parse(req, async (err, fields, files) => {
         if (err) {
