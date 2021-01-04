@@ -78,4 +78,4 @@ app.post('/teacher', async (req, res, next) => {
 
 });
 
-app.listen(3000, () => console.log('Sever Started'));
+app.listen(process.env.PORT, () => console.log('Sever Started'));
