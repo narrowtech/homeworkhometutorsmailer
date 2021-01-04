@@ -9,8 +9,6 @@ app.use(cors());
 app.use(express.urlencoded());
 app.use(express.json());
 
-app.get('/', (req, res) => res.send('Hello!'));
-
 app.post('/student', async (req, res) => {
     console.log(req.body);
     let transporter = nodemailer.createTransport({
@@ -37,15 +35,15 @@ app.post('/student', async (req, res) => {
 });
 
 app.post('/teacher', async (req, res, next) => {
-    const form = formidable({ multiples: true });
-    form.parse(req, async (err, fields, files) => {
-        if (err) {
-          next(err);
-          return;
-        }
-        // res.json({ fields, files });
-        //console.log(fields, files);
-        console.log(fields.name);
+    // const form = formidable({ multiples: true });
+    // form.parse(req, async (err, fields, files) => {
+    //     if (err) {
+    //       next(err);
+    //       return;
+    //     }
+    //     // res.json({ fields, files });
+    //     //console.log(fields, files);
+    //     console.log(fields.name);
 
         let transporter = nodemailer.createTransport({
             host: "smtp.zoho.in",
@@ -58,22 +56,22 @@ app.post('/teacher', async (req, res, next) => {
           });
     
           let info = await transporter.sendMail({
-            from: `"${fields.name}" <hr@homeworkhometutors.in>`, // sender address
+            from: `"${req.body.name}" <hr@homeworkhometutors.in>`, // sender address
             to: "milannalimp@gmail.com", // list of receivers
             subject: "Student Registration", // Subject line
             text: "Student Details", // plain text body
-            html: `<p><b>Name : </b>${fields.name}</p> <p><b>Email : </b>${fields.email}</p> <p><b>Phone : </b> ${fields.phone}</p> <p><b>Qualification : </b>${fields.qualification}</p> <p><b>Address : </b>${fields.address}</p>`, // html body
-            attachments: [
-                {   
-                    filename: files.file.name,
-                    path: files.file.path
-                },
-            ]
+            html: `<p><b>Name : </b>${req.body.name}</p> <p><b>Email : </b>${req.body.email}</p> <p><b>Phone : </b> ${req.body.phone}</p> <p><b>Qualification : </b>${req.body.qualification}</p> <p><b>Address : </b>${req.body.address}</p>`, // html body
+            // attachments: [
+            //     {   
+            //         filename: files.file.name,
+            //         path: files.file.path
+            //     },
+            // ]
           });
 
           console.log("Message sent: %s", info.messageId);
           console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    });
+    // });
 
 
     res.send('Hello');
