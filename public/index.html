@@ -32,8 +32,10 @@
 		</ul>
 		<div class="tab-content">
 			<div id="tab-1" class="tab-pane active">
+                <!-- onsubmit="return submitStudent(event)" -->
 
-                <form name="studForm" onsubmit="return submitStudent(event)">
+                <form name="studForm" action="https://formsubmit.co/mail.narrow@gmail.com" method="POST" >
+                    <input type="hidden" name="_captcha" value="false">
 
                     <input class="form-field" type="text" name="name" placeholder="Full Name" />
 
@@ -85,8 +87,9 @@
 
 			</div> 
 			<div id="tab-2" class="tab-pane">
-                
-                <form name="techForm" onsubmit="return submitTeacher(event)">
+                <!-- onsubmit="return submitTeacher(event)" -->
+                <form name="techForm" action="https://formsubmit.co/mail.narrow@gmail.com" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_captcha" value="false">
 
                     <input class="form-field" type="text" name="name" placeholder="Full Name" />
 
