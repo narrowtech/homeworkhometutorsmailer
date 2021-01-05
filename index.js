@@ -2,12 +2,18 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const formidable = require('formidable');
-
+const path = require('path');
 const app = express();
+
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', async (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.post('/student', async (req, res) => {
     console.log(req.body);

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="ico" href="./assets/images/head.ico"/>
+
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <title>Home Work Home Tutors</title>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <button class="modal-close-btn" id="close-btn">
+            <img src="./assets/images/close-icon.png" alt="close">
+        </button>
+
+        <div class="form-header">
+            <h3>Fill Form</h3>
+        </div>
+        
+        <ul class="nav nav-tabs">
+			<li class="active"><a href="#tab-1">Students</a></li>
+			<li class=""><a href="#tab-2">Teachers</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="tab-1" class="tab-pane active">
+
+                <form name="studForm" onsubmit="return submitStudent(event)">
+
+                    <input class="form-field" type="text" name="name" placeholder="Full Name" />
+
+                    <input class="form-field" type="text" name="email" placeholder="Email Address" />
+    
+                    <input class="form-field" type="number" name="phone" placeholder="Phone Number" />
+
+                    <select class="form-field" name="class" id="">
+                        <option value="null" selected="selected" disabled>Select Class</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+
+                    <select class="form-field" name="district" id="">
+                        <option value="null" selected="selected" disabled>Select District</option>
+                        <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                        <option value="kollam">Kollam</option>
+                        <option value="pathanamthitta">Pathanamthitta</option>
+                        <option value="alappuzha">Alappuzha</option>
+                        <option value="kottayam">Kottayam</option>
+                        <option value="idukki">Idukki</option>
+                        <option value="ernakulam">Ernakulam</option>
+                        <option value="thrissur">Thrissur</option>
+                        <option value="palakkad">Palakkad</option>
+                        <option value="malappuram">Malappuram</option>
+                        <option value="kozhikode">Kozhikode</option>
+                        <option value="Wayanad">Wayanad</option>
+                        <option value="Kannur">Kannur</option>
+                        <option value="Kasaragod">Kasaragod</option>
+                    </select>
+
+                    <button class="form-submit-button" id="student-button" type="submit"> 
+                        <div id="loader" class="loader void"></div>
+                        <p id="texter" style="color: #fff;">Submit</p>
+                    </button>
+                    
+
+                </form>
+
+			</div> 
+			<div id="tab-2" class="tab-pane">
+                
+                <form name="techForm" onsubmit="return submitTeacher(event)">
+
+                    <input class="form-field" type="text" name="name" placeholder="Full Name" />
+
+                    <input class="form-field" type="text" name="email" placeholder="Email Address" />
+    
+                    <input class="form-field" type="number" name="phone" placeholder="Phone Number" />
+
+                    <input class="form-field" type="text" name="qualification" placeholder="Qualification" />
+
+                    <textarea name="address" class="form-field address-field" placeholder="Address" rows="6"></textarea>
+
+                    <div class="upload-row">
+
+                        <label class="file-upload-button" for="file-upload">
+                            Upload Your Resume
+                        </label>
+                        <p class="uploaded-file-name">
+                            
+                        </p>
+
+                    </div>
+                    <input style="display: none;" type="file" name="resume" id="file-upload" class="form-field" onchange="processSelectedFile(this)" />
+
+                    <button class="form-submit-button" id="teacher-button" type="submit">
+                        <div id="loader2" class="loader void"></div>
+                        <p id="texter2" style="color: #fff;">Submit</p>
+                    </button>
+
+                </form>
+
+			</div>
+		</div>
+    </div>
+    <div class="toast" id="toast">
+        <h3>Form successfully sent</h3>
+        <button class="toast-close-btn" id="toast-close-btn">
+            <img src="./assets/images/close-icon.png" alt="close">
+        </button>
+    </div>
+    <!-- ?============================================ -->
+    <!-- ?================= Nav Bar ================= -->
+    <!-- ?========================================== -->
+    <nav>
+
+        <img class="company_logo" src="./assets/images/logo_icon.svg" alt="logo">
+
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        <ul class="nav-links">
+
+            <img src="./assets/images/close-icon.png" class="close-icon" alt="close">
+
+            <li> <a href="#home">Home</a> </li>
+            <li> <a href="#about">About Us</a> </li>
+            <li> <a href="#services">Services</a> </li>
+            <li> <a href="#testimonials">Testimonials</a> </li>
+            <li> <a href="#contact">Contact Us</a> </li>
+            <li> <a class="common-button call-pop">Register</a> </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- ?============================================ -->
+    <!-- ?=============== Home Section ============== -->
+    <!-- ?========================================== -->
+    <section id="home" class="home-section">
+
+        <div class="home-left-content">
+            <h1>We solve your <span class="hero-text">Education</span> <br /> problems</h1>
+    
+            <h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
+            </h3>
+    
+            <a class="common-button for-more-button call-pop" href="#">For More</a>
+        </div>
+
+        <div class="home-right-content">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide0"></div>
+                    <div class="swiper-slide slide1"></div>
+                    <div class="swiper-slide slide2"></div>
+                    <div class="swiper-slide slide3"></div>
+                    <div class="swiper-slide slide4"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <!-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> -->
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ?============================================ -->
+    <!-- ?============== About Section ============== -->
+    <!-- ?========================================== -->
+    <section id="about" class="about-section">
+
+        <div class="left-container">
+            <h1>Follow <br /> Easy 4 Steps</h1>
+    
+            <h3 class="steps-details">
+                In this competitive environment of the modern world, it is necessary to understand one's strength and weakness and follow your dreams and aspirations by working out on your interested fields of study. Rather than moving like a herd, you have to stand out from the crowd and be the leader. And as for a student education matters the most. This is where Home Work Home Tutors comes in to help you achieve your educational fulfillment. We here at Home Work Home Tutors provides students a fully personalized learning environment where the students can personalize there classes according to their time, interests and convenience so that it will not affect their leisure. Disrupting the norms of conventional education and revolutionalizing the learning environment is the motto of Home Work Home Tutors which has already started its fire in Kerala.
+            </h3>
+        </div>
+
+        <div class="right-container">
+
+
+            <div class="step-cards first-step">
+                <img class="step_img a" src="./assets/images/step_img_1.svg" alt="step1">
+                Top Trainers
+            </div>
+
+            <img class="step-cards-line-image first-line-image" src="./assets/images/lineOne.svg" alt="">
+
+            <div class="step-cards second-step">
+                <img class="step_img b" src="./assets/images/step_img_2.svg" alt="step2">
+                One-to-One Sessions
+            </div>
+
+            <img class="step-cards-line-image second-line-image" src="./assets/images/lineTwo.svg" alt="">
+
+            <div class="step-cards third-step">
+                <img class="step_img c" src="./assets/images/step_img_3.svg" alt="step3">
+                Scheduled Timings
+            </div>
+
+            <img class="step-cards-line-image third-line-image" src="./assets/images/lineOne.svg" alt="">
+
+            <div class="step-cards fourth-step">
+                <img class="step_img d" src="./assets/images/step_img_4.svg" alt="step4">
+                Create Account
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <!-- ?============================================ -->
+    <!-- ?============ Services Section ============= -->
+    <!-- ?========================================== -->
+    <section id="services" class="services-section">
+    
+        <h1>Choose the perfect course<br /> for you</h1>
+    
+        <div class="service-swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="courses">
+                            <div class="single-course course-a"> 
+                                <div class="course-picture"></div> 
+                                <div class="course-content">
+                                    <h4>Spoken English</h4>
+                                    <p>
+                                        Learn to Speak English with confidence by our customized Course
+                                    </p>
+                                </div> 
+                            </div>
+                            <div class="single-course course-b"> 
+                                <div class="course-picture"></div> 
+                                <div class="course-content">
+                                    <h4>Competitive Exams Coaching</h4>
+                                    <p>
+                                        The ability to learn faster and efficient may be the only sustainable competitive Advantage. Our courses helps the students to survive in the competitive world.
+                                    </p>
+                                </div> 
+                            </div>
+                            <div class="single-course course-c"> 
+                                <div class="course-picture"></div> 
+                                <div class="course-content">
+                                    <h4>SSLC Crash Course</h4>
+                                    <p>
+                                        This Course allows rapid and intense schedules and method of coaching for SSLC Students.
+                                    </p>
+                                </div> 
+                            </div>
+                            <div class="single-course course-d"> 
+                                <div class="course-picture"></div> 
+                                <div class="course-content">
+                                    <h4>Basic Reading & Writing</h4>
+                                    <p>
+                                        An Extremely Super Designed Educational Plan that helps Students to Learn the Basics easily as ever.
+                                    </p>
+                                </div> 
+                            </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="courses">
+                        <div class="single-course course-a one"> 
+                            <div class="course-picture"></div> 
+                            <div class="course-content">
+                                <h4>Advanced Reading & Writing</h4>
+                                <p>
+                                    Taking our Students to next Level of Reading and Writing.
+                                </p>
+                            </div> 
+                        </div>
+                        <div class="single-course course-b two"> 
+                            <div class="course-picture"></div> 
+                            <div class="course-content">
+                                <h4>Foundation Course</h4>
+                                <p>
+                                    It will help you attain the correct level of qualifications and skills to pursue a basic level of a particular subject.
+                                </p>
+                            </div> 
+                        </div>
+                        <div class="single-course course-c three"> 
+                            <div class="course-picture"></div> 
+                            <div class="course-content">
+                                <h4>Academic Training</h4>
+                                <p>
+                                    We Provides Individual Care for Students from KG to Plus Two.
+                                </p>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="service-swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
+        </div>
+
+        <a class="common-button for-more-button call-pop" href="#">Browse All</a>
+
+        <img class="service-bg-img" src="./assets/images/service_ng_img.svg" alt="service">
+
+    </section>
+
+    <!-- ?============================================ -->
+    <!-- ?========== Testimonials Section =========== -->
+    <!-- ?========================================== -->
+    <section id="testimonials" class="testimonials-section">
+
+        <div class="left-image-container">
+
+            <div class="main-image-card">
+                <div class="image"></div>
+                <div class="image-details">
+                    <h4>Steven</h4>
+                    <p>7th iohs edavanna</p>
+                </div>
+            </div>
+
+            <div class="small-images a"></div>
+            <div class="small-images b"></div>
+            <div class="small-images c"></div>
+            <div class="small-images d"></div>
+            <div class="small-images e"></div>
+
+        </div>
+
+        <div class="right-text-container">
+
+            <h1>
+                Over 10,000+ <br />
+                Talented People <br />
+                Registered in Our <br />
+                Website <br />
+            </h1>
+    
+            <a class="common-button for-more-button call-pop" href="#">Browse all</a>
+
+        </div>
+
+        <img class="testimonial-bg-img" src="./assets/images/testimonial_ng_img.svg" alt="service">
+
+    </section>
+
+    <!-- ?============================================ -->
+    <!-- ?============= Team Section ============== -->
+    <!-- ?========================================== -->
+    <section class="teams-section">
+    
+        <h1>Our Team</h1>
+    
+        <div class="teams-wrapper">
+
+            <div class="member-card">
+                <div class="image first"></div>
+
+                <p class="description">
+                    We are disrupting the norms of education
+                </p>
+
+                <span class="member-card-inline-divider"></span>
+
+                <h4 class="member-name">John Doe</h4>
+                <p class="member-position">CEO at Homework</p>
+            </div>
+            <div class="member-card">
+                <div class="image second"></div>
+
+                <p class="description">
+                    Be limitless, Be you
+                </p>
+
+                <span class="member-card-inline-divider"></span>
+
+                <h4 class="member-name">John Doe</h4>
+                <p class="member-position">COO at Homework</p>
+            </div>
+            <div class="member-card">
+                <div class="image third"></div>
+
+                <p class="description">
+                    No investment in education is ever wasted
+                </p>
+
+                <span class="member-card-inline-divider"></span>
+
+                <h4 class="member-name">John Doe</h4>
+                <p class="member-position">MD at Homework</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ?============================================ -->
+    <!-- ?============ Contacts Section ============= -->
+    <!-- ?========================================== -->
+    <section id="contact" class="contacts-section">
+    
+        <div class="contact-left-content">
+
+            <h1>
+                Don't hesitate to <br />
+                Contact us for any <br />
+                Information. <br />
+            </h1>
+
+            <div class="contact-divider"></div>
+        
+            <h3> <i class="fas fa-map-marker-alt"></i> Malappuram, Calicut, Wayanad </h3>
+            <h3> <i class="fas fa-phone-alt"></i> 996 610 7578, 954 483 2272 </h3>
+            <h3> <i class="fab fa-instagram-square"></i> homework_hometutors </h3>
+            <h3> <i class="fas fa-envelope"></i> homeworkhometutors@gmail.com </h3>
+
+        </div>
+
+        <div class="right-form-contain">
+
+            <div class="contact-form">
+
+                <h2>Get In Touch</h2>
+
+                <form action="">
+
+                    <input class="form-field" type="text" name="name" placeholder="Full Name" />
+
+                    <input class="form-field" type="text" name="email" placeholder="Email Address" />
+
+                    <textarea name="address" class="form-field address-field" placeholder="What's your thought ?" rows="6"></textarea>
+
+                    <button class="form-submit-button call-pop" type="button"> Sent </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        
+        <div class="first-row">
+
+            <img class="footer-logo" src="./assets/images/logo_white.png" alt="logo">
+
+            <div class="column quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="http://">Careers</a></li>
+                    <li><a href="http://">Become a Trainer</a></li>
+                    <li><a href="http://">Give Feedback</a></li>
+                    <li><a href="http://">FAQ</a></li>
+                </ul>
+            </div>
+    
+            <div class="column features">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="http://">Best Teachers</a></li>
+                    <li><a href="http://">Adaptive Teaching</a></li>
+                    <li><a href="http://">Convenient & Sale</a></li>
+                    <li><a href="http://">LIVE & Interactive</a></li>
+                </ul>
+            </div>
+    
+            <div class="column resources">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="http://">Study Materials</a></li>
+                    <li><a href="http://">Question Papers</a></li>
+                    <li><a href="http://">Take Quiz</a></li>
+                    <li><a href="http://">Downloads</a></li>
+                </ul>
+            </div>
+    
+            <div class="column quick-links">
+                <h3>Top Products</h3>
+                <ul>
+                    <li><a href="http://">Foundation Course</a></li>
+                    <li><a href="http://">Spoken English</a></li>
+                    <li><a href="http://">+1 / +2 Crash Courses</a></li>
+                    <li><a href="http://">JEE / NEET Courses</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="second-row">
+
+            <p>
+                &copy; homeworkhometutors. All rights reserved. Created and maintained by &nbsp;<a href="https://narrowtech.in/" target="_blank">Narrowtech.in</a>
+            </p>
+
+        </div>
+        
+    </footer>
+
+    <!-- ? === Script Files === -->
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    	<!-- Swiper JS -->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        });
+
+        var swiper = new Swiper('.service-swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        pagination: {
+            el: '.service-swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.service-swiper-button-next',
+            prevEl: '.service-swiper-button-prev',
+        },
+        });
+        </script>
+</body>
+</html>

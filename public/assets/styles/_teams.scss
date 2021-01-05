@@ -1,0 +1,78 @@
+.teams-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F8FCFD;
+    .teams-wrapper {
+        margin-top: 4rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .member-card {
+            width: 39rem;
+            height: 48rem;
+            margin: 0 4rem;
+            border-radius: 2rem;
+            border: 1px solid #E8E8E8;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5rem 6rem;
+            .image {
+                width: 12rem;
+                height: 12rem;
+                border-radius: 50%;
+            }
+            .image.first {
+                background: url('../images/ceo.jpeg') no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+            .image.second {
+                background: url('../images/coo.jpg') no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+            .image.third {
+                border: 1px solid #E8E8E8;
+                background-size: cover;
+                background-position: center;
+            }
+            .description {
+                margin: 1rem 0rem;
+                text-align: center;
+                font-size: 2rem;
+            }
+            .member-card-inline-divider {
+                margin: 2.8rem 0rem;
+                height: 0.3rem;
+                width: 9.4rem;
+                background-color: #9FE670;
+            }
+            .member-position {
+                margin-top: 1rem;
+            }
+            &:hover {
+                box-shadow: 14px 27px 80px rgba($color: #000000, $alpha: 0.09);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .teams-wrapper {
+        flex-direction: column;
+        align-items: center;
+        .member-card {
+            margin: 2rem 0rem !important;
+        }
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .member-card {
+        width: 30rem !important;
+        height: 48rem;
+    }
+}

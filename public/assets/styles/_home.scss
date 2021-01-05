@@ -1,0 +1,173 @@
+nav  {
+    width: 80%;
+    margin: auto;
+}
+
+nav {
+    min-height: 10vh;
+    padding: 3rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .close-icon {
+        display: none;
+    }
+    .company_logo {
+        width: 100px;
+    }
+    ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        li {
+            padding: 1rem 2rem;
+        }
+    }
+}
+
+.home-section {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 0rem 0rem 0rem auto;
+    .hero-text {
+        color: rgb(19, 85, 146);
+    }
+    h3 {
+        margin: 2.5rem 0rem 5rem 0rem;
+        max-width: 44.5rem;
+    }
+    .home-left-content {
+        width: 35%;
+        @media screen and (max-width: 1370px) {
+            width: 45%;
+        }
+        @media screen and (max-width: 870px) {
+            width: 100%;
+            // background: url('../images/heroTablet.svg') no-repeat;
+            // background-size: cover;
+            // background-size: contain;
+            // background-position: 500% 0px;
+        }
+    }
+    .home-right-content {
+        width: 65%;
+        @media screen and (max-width: 1370px) {
+            width: 55%;
+            background-position-x: -40%;
+        }
+        @media screen and (max-width: 870px) {
+            display: none;
+        }
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        // background: #fff;
+        /* Center slide text vertically */
+        border-radius: 1rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+      .slide0 {
+        background: url('../images/heroTablet.svg') no-repeat;
+        background-size: cover;
+        background-position-x: 50%;
+      }
+      .slide1 {
+        background: url('../images/slide1.webp') no-repeat;
+        background-size: cover;
+      }
+      .slide2 {
+        background: url('../images/slide2.webp') no-repeat;
+        background-size: cover;
+      }
+      .slide3 {
+        background: url('../images/slide3.webp') no-repeat;
+        background-size: cover;
+      }
+      .slide4 {
+        background: url('../images/slide4.webp') no-repeat;
+        background-size: cover;
+      }
+}
+
+@media screen and (max-width: 974px) {
+    nav {
+        width: 85%;
+    }
+    nav {
+        ul {
+            li {
+                padding: 1rem 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        width: 100%;
+        padding: 3rem 4rem;
+    }
+    .hamburger {
+        cursor: pointer;
+    }
+    .line {
+        width: 3rem;
+        height: 0.3rem;
+        margin: 0.5rem;
+        background-color: #333333;
+    }
+
+    nav {
+    ul {
+        z-index: 200;
+        position: relative;
+        padding: 2rem 0rem;
+        border-radius: 1rem;
+        position: fixed;
+        right: 0;
+        background-color: #ffffff;
+        box-shadow: 2px 4px 19px rgba($color: #000000, $alpha: .16);
+        min-height: 100px;
+        min-width: 300px;
+        margin-right: 4rem;
+        flex-direction: column;
+        align-items: center;
+        clip-path: circle(100px at 110% -30%);
+        transition: all 500ms ease-in-out;
+        li {
+            margin-bottom: 1.5rem;
+        }
+        .close-icon {
+            cursor: pointer;
+            width: 16px;
+            transform: translateX(-100%) translateY(100%);
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+    ul.open {
+        clip-path: circle(58rem at 110% -30%);
+    }
+}
+}

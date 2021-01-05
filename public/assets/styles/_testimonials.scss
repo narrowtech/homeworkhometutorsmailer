@@ -1,0 +1,131 @@
+
+.testimonials-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    .left-image-container { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 60%;
+        .main-image-card {
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 2rem;
+            background-color: #ffffff;
+            box-shadow: 0px 14px 80px rgba($color: #000000, $alpha: 0.08);
+            padding: 1.5rem;
+            .image {
+                width: 38rem;
+                height: 38rem;
+                border-radius: 2rem;
+                background: url('../images/hero.webp') no-repeat;
+                background-size: cover;
+                @media screen and (max-width: 1400px) {
+                    width: 28rem;
+                    height: 28rem;
+                }
+            }
+            .image-details {
+                margin: 1rem 0rem;
+            }
+        }
+        .small-images {
+            z-index: 20;
+            position: absolute;
+            left: 27%;
+            top: 0%;
+            width: 10.15rem;
+            height: 10.15rem;
+            border-radius: 2rem;
+            border: 0.6rem solid #ffffff;
+            box-shadow: 0px 9px 32px rgba($color: #000000, $alpha: 0.10);
+            background-size: cover;
+            background-position: center;
+        }
+        .small-images.a { 
+            background: url('../images/slide4.webp') no-repeat;
+            background-size: cover;
+            background-position: center;
+            transform: translateX(-120%) translateY(-10%);
+         }
+        .small-images.b { 
+            background: url('../images/slide3.webp') no-repeat; 
+            background-size: cover;
+            background-position: center;
+            transform: translateX(380%) translateY(-20%); 
+        }
+        .small-images.c { 
+            background: url('../images/slide1.webp') no-repeat; 
+            background-size: cover;
+            background-position: center;
+            transform: translateX(-90%) translateY(210%) scale(1.3); 
+        }
+        .small-images.d { 
+            background: url('../images/kid.jpg') no-repeat; 
+            background-size: cover;
+            background-position: center;
+            transform: translateX(420%) translateY(190%); 
+        }
+        .small-images.e { 
+            background: url('../images/slide2.webp') no-repeat; 
+            background-size: cover;
+            background-position: center;
+            transform: translateX(260%) translateY(430%) scale(1.3); 
+        }
+        @media screen and (max-width: 1540px) { 
+            .small-images.b { transform: translateX(340%) translateY(-20%); }
+            .small-images.d { transform: translateX(380%) translateY(190%); }
+         }
+        @media screen and (max-width: 1400px) {
+            .small-images.a { transform: translateX(-120%) translateY(-10%); }
+            .small-images.b { transform: translateX(270%) translateY(-20%); }
+            .small-images.c { transform: translateX(-100%) translateY(210%) scale(1.3); }
+            .small-images.d { transform: translateX(320%) translateY(190%); }
+            .small-images.e { transform: translateX(180%) translateY(320%) scale(1.3); }
+        }
+    }
+    .right-text-container { 
+        width: 40%;
+        h1 {
+            margin: 2rem 0rem 4rem 0rem;
+        }
+    }
+    @media screen and (max-width: 1262px) {
+        .small-images {
+            display: none;
+        }
+        .left-image-container {
+            width: 50%;
+        }
+        .right-text-container { 
+            width: 50%;
+        }
+    }
+
+    .testimonial-bg-img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: translateX(50%);
+    }
+}
+@media screen and (max-width: 832px) { 
+    .testimonials-section { 
+        flex-direction: column-reverse;
+     }
+     .left-image-container, .right-text-container {
+        width: 100% !important;
+    }
+    .left-image-container {
+        margin-top: 2rem;
+    }
+    .right-text-container {
+        margin-bottom: 3rem;
+    }
+ }
